@@ -1,0 +1,49 @@
+# ARTIST PROMO MUSIC - Project Rules and Patterns
+
+## Naming Conventions
+- Component files: PascalCase (e.g., `HeroSection.tsx`)
+- Utility files: kebab-case (e.g., `placeholder-data.ts`)
+- Pages: lowercase `page.tsx` within route folders
+- Layout files: lowercase `layout.tsx`
+- Type definitions: PascalCase (e.g., `Package` interface)
+
+## Component Structure
+- Component markup should be well-formatted with clear hierarchy
+- Use Tailwind classes directly on elements
+- Prefer composition over complexity for complex components
+- Use appropriate semantic HTML elements for accessibility
+
+## Styling Patterns
+- Use Tailwind CSS utility classes for styling
+- Use the `cn()` utility for conditional class merging
+- Apply dark theme styling directly (already set at root level)
+- Follow mobile-first approach for responsive design
+- Use consistent spacing and sizing variables
+
+## Animation Guidelines
+- Use Framer Motion for animations
+- Keep animations subtle and purposeful
+- Use `FadeInUp` component for scroll-triggered animations
+- Stagger animations for lists to avoid overwhelming effect
+- Consider reduced-motion preferences
+
+## File Organization
+- Keep related components in appropriate subdirectories
+- Page-specific components in section folders
+- Shared UI components in ui folder
+- Animation utilities in animations folder
+- Types in types directory
+
+## Coding Preferences
+- Use TypeScript interfaces for component props
+- Export named components (not default exports)
+- Keep components focused on single responsibility
+- Use React Server Components by default
+- Mark interactive components with "use client" directive
+
+## Project-Specific Considerations
+- Theme is exclusively dark mode (no light mode toggle)
+- Package data structure follows the `Package` interface
+- Navigation only includes Home, Packages, and About
+- Focus on visual appeal and animations
+- Current work is UI-only; backend planned for future 
