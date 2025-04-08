@@ -64,7 +64,7 @@ export default function FAQPage() {
           />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Get answers to common questions about our music promotion services. 
-            Can't find what you're looking for? <a href="/contact" className="text-primary hover:underline">Contact us</a>.
+            Can&apos;t find what you&apos;re looking for? <a href="/contact" className="text-primary hover:underline">Contact us</a>.
           </p>
         </div>
       </FadeInUp>

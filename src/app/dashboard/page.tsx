@@ -43,7 +43,7 @@ export default function DashboardPage() {
             </div>
             <h2 className="text-2xl font-bold mb-4">Coming Soon</h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              We're currently building an all-new dashboard experience for artists. 
+              We&apos;re currently building an all-new dashboard experience for artists. 
               Track your promotions, view statistics, and manage your submissions all in one place.
             </p>
             <div className="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row justify-center">

@@ -32,7 +32,7 @@ export default function ContactPage() {
           />
           <p className="text-lg text-muted-foreground mx-auto max-w-2xl">
             Have questions about our music promotion services? Want to submit your track?
-            Fill out the form below and we'll get back to you.
+            Fill out the form below and we&apos;ll get back to you.
           </p>
         </div>
       </FadeInUp>
@@ -139,7 +139,7 @@ export default function ContactPage() {
               </div>
               <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
               <p className="text-muted-foreground mb-6">
-                Thanks for reaching out. We'll get back to you as soon as possible.
+                Thanks for reaching out. We&apos;ll get back to you as soon as possible.
               </p>
               <Button onClick={() => setIsSubmitted(false)}>Send Another Message</Button>
             </motion.div>
@@ -167,7 +167,7 @@ export default function ContactPage() {
               </svg>
             </div>
             <h3 className="text-xl font-semibold mb-2">Email</h3>
-            <p className="text-muted-foreground">support@eightmike.com</p>
+            <p className="text-muted-foreground">contact@artistpromomusic.shop</p>
           </div>
           
           <div className="bg-card/20 backdrop-blur-sm p-6 rounded-lg border border-white/5 shadow-lg text-center">

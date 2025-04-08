@@ -1,14 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState, useRef, ElementType } from "react";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 type AnimatedTextProps = {
   text: string;
   className?: string;
   once?: boolean;
-  el?: keyof JSX.IntrinsicElements;
+  el?: ElementType;
   animation?: "reveal" | "typewriter" | "gradient" | "bounce";
   delay?: number;
 };
@@ -21,10 +20,19 @@ export function AnimatedText({
   animation = "reveal",
   delay = 0,
 }: AnimatedTextProps) {
-  const ref = React.useRef<HTMLParagraphElement>(null);
-  const [isInView, setIsInView] = React.useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
   
-  React.useEffect(() => {
+  useEffect(() => {
+    // Check if device is mobile
+    setIsMobile(window.innerWidth < 768);
+    
+    // Check if user prefers reduced motion
+    setIsReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    
+    // Use IntersectionObserver for better performance
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -38,22 +46,34 @@ export function AnimatedText({
           }
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 } // Trigger when 10% visible for better performance
     );
     
-    if (ref.current) {
-      observer.observe(ref.current);
+    // Store a reference to the current value to use in cleanup
+    const currentRef = ref.current;
+    
+    if (currentRef) {
+      observer.observe(currentRef);
     }
     
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [once]);
   
   const renderAnimation = () => {
+    // For mobile or reduced motion, use simpler animations or none at all
+    if (isReducedMotion || (isMobile && (animation === "bounce" || animation === "typewriter"))) {
+      return <span className="inline-block">{text}</span>;
+    }
+    
     const words = text.split(" ");
+    
+    // Use simpler animations for mobile
+    const mobileDelay = isMobile ? Math.min(delay, 0.1) : delay;
+    const mobileAnimationDelay = isMobile ? 0.03 : 0.05; // Faster animation on mobile
     
     switch (animation) {
       case "reveal":
@@ -63,12 +83,12 @@ export function AnimatedText({
               <motion.span
                 key={i}
                 className="inline-block mr-1"
-                initial={{ y: 40, opacity: 0 }}
-                animate={isInView ? { y: 0, opacity: 1 } : { y: 40, opacity: 0 }}
+                initial={{ y: 20, opacity: 0 }}
+                animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
                 transition={{
-                  duration: 0.5,
-                  ease: [0.25, 0.1, 0.25, 1],
-                  delay: delay + i * 0.05,
+                  duration: isMobile ? 0.3 : 0.5,
+                  ease: "easeOut",
+                  delay: mobileDelay + i * mobileAnimationDelay,
                 }}
               >
                 {word}
@@ -88,7 +108,7 @@ export function AnimatedText({
                 animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{
                   duration: 0.1,
-                  delay: delay + i * 0.03,
+                  delay: mobileDelay + i * 0.02, // Faster typing on mobile
                 }}
               >
                 {char === " " ? "\u00A0" : char}
@@ -105,20 +125,28 @@ export function AnimatedText({
         );
         
       case "bounce":
+        // Limit the number of animated characters on mobile
+        const maxChars = isMobile ? Math.min(text.length, 10) : text.length;
+        const characters = text.slice(0, maxChars).split("");
+        
+        if (text.length > maxChars) {
+          characters.push("...");
+        }
+        
         return (
           <span className="inline-block">
-            {text.split("").map((char, i) => (
+            {characters.map((char, i) => (
               <motion.span
                 key={i}
                 className="inline-block"
                 initial={{ y: 0 }}
                 animate={isInView ? {
-                  y: [0, -10, 0],
+                  y: [0, -5, 0],
                 } : { y: 0 }}
                 transition={{
-                  duration: 0.6,
+                  duration: 0.4,
                   ease: "easeInOut",
-                  delay: delay + i * 0.05,
+                  delay: mobileDelay + i * mobileAnimationDelay,
                   repeat: 0,
                 }}
               >
@@ -134,8 +162,10 @@ export function AnimatedText({
   };
   
   return (
-    <Element ref={ref} className={className}>
-      {renderAnimation()}
-    </Element>
+    <div ref={ref} className={className}>
+      <Element>
+        {renderAnimation()}
+      </Element>
+    </div>
   );
 }

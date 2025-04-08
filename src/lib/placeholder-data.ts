@@ -1,6 +1,14 @@
-import { Package } from "@/types";
+// Defining package type locally instead of importing to avoid conflicts
+export type Package = {
+  id: number;
+  title: string;
+  description: string;
+  price: string;
+  features: string[];
+  isPopular: boolean;
+};
 
-export const placeholderPackages = [
+export const placeholderPackages: Package[] = [
   {
     id: 1,
     title: "Basic Promotion",
@@ -60,5 +68,3 @@ export const placeholderPackages = [
     isPopular: false
   }
 ];
-
-export type Package = typeof placeholderPackages[0];

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import Logo from "@/components/layout/logo";
 import { Badge } from "@/components/ui/badge";
@@ -19,8 +19,8 @@ export default function Header() {
     { href: "/about", label: "About" },
     { 
       href: "/free-trial", 
-      label: "Hot Free Trial", 
-      badge: "Hot",
+      label: "Free Trial", 
+      badge: "Limited",
       highlight: true 
     },
     { href: "/contact", label: "Contact" },
@@ -51,11 +51,11 @@ export default function Header() {
               >
                 <span className="relative flex items-center">
                   {link.label}
-                  {link.badge && link.badge === "Hot" && (
+                  {link.badge && link.badge === "Limited" && (
                     <Badge 
                       className={cn(
                         "ml-1.5 px-1.5 py-0.5 text-[10px] font-medium",
-                        "bg-red-600 hover:bg-red-700 animate-hot-pulse"
+                        "bg-red-600 hover:bg-red-700"
                       )}
                     >
                       {link.badge}
@@ -72,7 +72,7 @@ export default function Header() {
                     </Badge>
                   )}
                   {link.highlight && (
-                    <span className="absolute -inset-1 rounded-full animate-pulse-glow bg-red-500/30 blur-md -z-10"></span>
+                    <span className="absolute -inset-1 rounded-full bg-red-500/20 blur-md -z-10"></span>
                   )}
                 </span>
               </Link>
@@ -89,6 +89,7 @@ export default function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="border-white/10 bg-black/95 backdrop-blur-md">
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <Logo className="mb-8" />
                 <nav className="flex flex-col space-y-6">
                   {navLinks.map((link) => (
@@ -105,11 +106,11 @@ export default function Header() {
                     >
                       <span className="relative flex items-center">
                         {link.label}
-                        {link.badge && link.badge === "Hot" && (
+                        {link.badge && link.badge === "Limited" && (
                           <Badge 
                             className={cn(
                               "ml-1.5 px-1.5 py-0.5 text-[10px] font-medium",
-                              "bg-red-600 hover:bg-red-700 animate-hot-pulse"
+                              "bg-red-600 hover:bg-red-700"
                             )}
                           >
                             {link.badge}
@@ -126,7 +127,7 @@ export default function Header() {
                           </Badge>
                         )}
                         {link.highlight && (
-                          <span className="absolute -inset-2 rounded-full animate-pulse-glow bg-red-500/30 blur-md -z-10"></span>
+                          <span className="absolute -inset-2 rounded-full bg-red-500/20 blur-md -z-10"></span>
                         )}
                       </span>
                     </Link>

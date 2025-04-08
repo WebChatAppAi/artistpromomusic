@@ -3,7 +3,7 @@
 import React from "react";
 import { FadeInUp } from "@/components/animations/fade-in-up";
 import { AnimatedText } from "@/components/animations/animated-text";
-import { ArrowRight, Mail, Music, MessageSquare, AlertTriangle, Check, ArrowUpRight, Zap } from "lucide-react";
+import { ArrowRight, Music, AlertTriangle, Check, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
@@ -38,8 +38,8 @@ export default function FreeTrialPage() {
           
           <div className="mb-6">
             <p className="text-gray-300 mb-4">
-              We're offering a limited number of free trial promotions to showcase our service quality. 
-              Here's what you'll get:
+              We&apos;re offering a limited number of free trial promotions to showcase our service quality. 
+              Here&apos;s what you&apos;ll get:
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
@@ -115,8 +115,8 @@ export default function FreeTrialPage() {
           <div className="mt-6 bg-white/5 backdrop-blur-sm rounded-lg p-4">
             <h3 className="font-medium mb-2 text-center">What happens after you apply?</h3>
             <p className="text-sm text-gray-400 text-center">
-              Once we receive your application, we'll review it within 24 hours and contact you via your provided
-              messaging app to confirm your free trial. After confirmation, we'll begin your 24-48 hour promotional period.
+              Once we receive your application, we&apos;ll review it within 24 hours and contact you via your provided
+              messaging app to confirm your free trial. After confirmation, we&apos;ll begin your 24-48 hour promotional period.
             </p>
           </div>
         </div>
@@ -129,16 +129,16 @@ export default function FreeTrialPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg">
               <p className="text-sm text-gray-300 italic mb-4">
-                "I was skeptical at first, but after trying the free promotion I was blown away by the results. 
-                Gained over 300 new listeners in just 24 hours!"
+                &quot;I was skeptical at first, but after trying the free promotion I was blown away by the results. 
+                Gained over 300 new listeners in just 24 hours!&quot;
               </p>
               <p className="text-sm font-medium">— Alex R., Hip-Hop Artist</p>
             </div>
             
             <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg">
               <p className="text-sm text-gray-300 italic mb-4">
-                "The free trial gave me a clear idea of what to expect from the full service. 
-                Professional communication and real results. Definitely worth trying!"
+                &quot;The free trial gave me a clear idea of what to expect from the full service. 
+                Professional communication and real results. Definitely worth trying!&quot;
               </p>
               <p className="text-sm font-medium">— Sarah M., Indie Singer</p>
             </div>

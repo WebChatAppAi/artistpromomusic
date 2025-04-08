@@ -39,7 +39,7 @@ export default function AboutPage() {
             your music to relevant playlists based on genre, mood, and style.
           </li>
           <li>
-            <strong>Network Leverage:</strong> Access to Eight Mike's extensive
+            <strong>Network Leverage:</strong> Access to Eight Mike&apos;s extensive
             network of independent and editorial playlist curators.
           </li>
           <li>
@@ -53,7 +53,7 @@ export default function AboutPage() {
         </ul>
         <h2>Meet Eight Mike</h2>
         <p>
-          (Placeholder for Eight Mike's bio - background, experience, passion
+          (Placeholder for Eight Mike&apos;s bio - background, experience, passion
           for music, success stories, etc. This section should be filled with
           actual content later.)
         </p>

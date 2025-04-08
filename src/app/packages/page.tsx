@@ -99,9 +99,9 @@ export default function PackagesPage() {
             Not sure which package is right for you? Try our free trial first!
           </p>
           <Link href="/free-trial">
-            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 group animate-glow">
+            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 group">
               <Zap size={16} className="mr-2" />
-              <span>Free Trial Promotion</span>
+              <span>Limited Free Trial</span>
               <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
